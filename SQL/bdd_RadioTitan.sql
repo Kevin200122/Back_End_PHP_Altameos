@@ -1,22 +1,21 @@
-CREATE TABLE Utilisateur (
 
-)
 
 CREATE TABLE Categorie (
-
+Id_Categorie INT PRIMARY KEY,
+Nom_Categorie Varchar(50),
 )
 
-CREATE TABLE Utilisateur_Role (
-Administrateur Varchar(50),
-Utilisateur Varchar(50),
-)
 
 CREATE TABLE Media (
-
+Id_Media INT PRIMARY KEY,
+Titre_Media Varchar(50),
+Auteur_Media Varchar(50),
+Type_Media Varchar(50),
+Duree_Media INT,
 )
 
 CREATE TABLE Actualite (
-    ID INT PRIMARY KEY,
+    Id INT PRIMARY KEY,
     Titre VARCHAR(255),
     Description TEXT,
     Contenu TEXT,
@@ -28,7 +27,7 @@ CREATE TABLE Actualite (
 )
 
 CREATE TABLE Roles (
-    ID INT PRIMARY KEY,
+    Id_Roles INT PRIMARY KEY,
     NomRole VARCHAR(255),
     Description TEXT,
     ID_Utilisateur INT,
@@ -39,8 +38,8 @@ CREATE TABLE Roles (
 
 
 CREATE TABLE Articles (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    titre TEXT,
+    Id_Article INT PRIMARY KEY AUTO_INCREMENT,
+    titre Varchar(50),
     contenu TEXT,
     date_creation DATETIME,
     auteur TEXT,
@@ -51,7 +50,7 @@ CREATE TABLE Articles (
 )
 
 CREATE TABLE podcast(
-    ID INT PRIMARY KEY,
+    Id INT PRIMARY KEY,
     Titre VARCHAR(255),
     Description TEXT,
     Duree TIME,
