@@ -29,7 +29,7 @@ if(isset($_POST['submit'])) {// Si le formulaire est soumis
     } elseif (!preg_match("#\W+#", $pass)) {
         echo "Le mot de passe doit contenir au moins un caractère spécial";
         exit;
-    } elseif ($pass != $comfirmation_pass) {
+    } elseif ($pass != $confirmation_pass) {
         echo "Les mots de passe ne correspondent pas";
         exit;
     } else {

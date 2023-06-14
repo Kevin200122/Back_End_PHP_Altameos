@@ -2,7 +2,7 @@
 session_start();
 include('config.php');
 if(!$_SESSION['pseudo']) {
-    header('Location: connexion.php');
+    header('Location: Connexion.php');
 }
 ?>
 <!DOCTYPE html>
@@ -14,10 +14,10 @@ if(!$_SESSION['pseudo']) {
 </head>
 <body>
 <?php
-$req = $conn->query('SELECT * FROM album');
+$req = $conn->query('SELECT * FROM albums');
 while($donnees = $req->fetch()) {//fetch() fetches the next row from a result set
     ?>
-    <div class="album"style="border: 1px solid black;">
+    <div class="albums"style="border: 1px solid black;">
     <h2><?= $donnees['titre']; ?></h2>
     <p><?= $donnees['contenu']; ?></p>
     <p><?= $donnees['Auteur']; ?></p>

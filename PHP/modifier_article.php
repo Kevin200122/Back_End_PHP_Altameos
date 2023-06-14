@@ -12,7 +12,7 @@ if(isset($_GET['id']) and !empty($_GET['id'])) {
             $titre = htmlspecialchars($_POST['titre']);
             $contenu = nl2br(htmlspecialchars($_POST['contenu'])) ;
             if(!empty($titre) AND !empty($contenu)) {
-                $req = $conn->prepare('UPDATE articles SET titre = ?, contenu = ? WHERE id = ?');
+                $req = $conn->prepare('UPDATE articles SET titre = ?, contenu = ?, WHERE id = ?');
                 $req->execute(array($titre, $contenu, $getid));
                 header('Location: articles.php');
             } else {
