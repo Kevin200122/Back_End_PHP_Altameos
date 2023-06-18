@@ -153,4 +153,4 @@ CREATE TABLE albums(
 
 INSERT INTO albums (id_album, Auteur, contenu, titre) VALUES 
 (4, "'Claude François', 'Le lundi au soleil, c'est une chose que l'on aura jamais. A chaque fois c'est pareil.,
-'Le lundi au soleil'"),
+'Le lundi au soleil'"),(5, 'Indila', 'Ô ma douce souffrance, pour insister tu recommences. Je ne suis une personne sans importance.', 'Dernière danse')
