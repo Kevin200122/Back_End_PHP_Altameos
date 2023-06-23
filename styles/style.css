@@ -36,3 +36,16 @@ ul {
 li a:hover {
     background-color: rgb(83, 79, 79);
 }
+
+#Titre_Video {
+    background-color: lightgreen;
+}
+
+textarea {
+    background-color: lightgreen;
+}
+
+img {
+    width: 250px;
+    height: 200px;
+}

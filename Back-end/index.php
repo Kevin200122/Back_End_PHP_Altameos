@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['pseudo'])) {
   
 }else{
-  header('Location: ./Back_End_PHP_Altameos/PHP/connexion.php');
+  header('Location: ./Back_End_Altameos/PHP/Connexion.php');
   exit;
 }
 
@@ -20,6 +20,8 @@ if (isset($_SESSION['pseudo'])) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Purple Admin</title>
+<!--CSS pour changer l'apparence du Dashboard-->
+<link rel="stylesheet" href="../styles/La_Dashbord.css"
 <!-- plugins:css -->
 <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -250,7 +252,7 @@ if (isset($_SESSION['pseudo'])) {
 </li>
 <li class="nav-item">
 <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-<span class="menu-title">Basic UI Elements</span>
+<span class="menu-title">Les vidéos</span>
 <i class="menu-arrow"></i>
 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
 </a>
@@ -342,10 +344,7 @@ if (isset($_SESSION['pseudo'])) {
 <div class="card bg-gradient-danger card-img-holder text-white">
 <div class="card-body">
 <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-<h4 class="font-weight-normal mb-3">Weekly Sales <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-</h4>
-<h2 class="mb-5">$ 15,0000</h2>
-<h6 class="card-text">Increased by 60%</h6>
+<ul class="La-video" id="Des_Videos">Vidéos</ul>
 </div>
 </div>
 </div>
@@ -368,28 +367,6 @@ if (isset($_SESSION['pseudo'])) {
 </h4>
 <h2 class="mb-5">95,5741</h2>
 <h6 class="card-text">Increased by 5%</h6>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-md-7 grid-margin stretch-card">
-<div class="card">
-<div class="card-body">
-<div class="clearfix">
-<h4 class="card-title float-left">Visit And Sales Statistics</h4>
-<div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
-</div>
-<canvas id="visit-sale-chart" class="mt-4"></canvas>
-</div>
-</div>
-</div>
-<div class="col-md-5 grid-margin stretch-card">
-<div class="card">
-<div class="card-body">
-<h4 class="card-title">Traffic Sources</h4>
-<canvas id="traffic-chart"></canvas>
-<div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
 </div>
 </div>
 </div>

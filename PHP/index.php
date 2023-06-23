@@ -12,14 +12,14 @@ if(!$_SESSION['pseudo']) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link href="../styles/style.css" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">
 <!-- Bootstrap CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
-<a class="navbar-brand" href="#" id="Barre-Menu">Navbar</a>
+<a class="navbar-brand" href="#">Navbar</a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -41,10 +41,13 @@ if(!$_SESSION['pseudo']) {
 <a class="barre-link" href="modifier_categorie.php">Catégorie</a>
 </li>
 <li class="barre-item">
-<a class="barre-link" href="../Back-end/index.php">index.php</a>
+<a class="barre-link" href="../Back-end/index.php">dashboard</a>
 </li>
-<li class="nav-item">
+<li class="barre-item">
 <a class="barre-link" href="Telecharger_album.php">Telecharger_album</a>
+<li class="barre-item">
+<li class="barre-item">
+<a class="barre-link" href="Upload_video.php">Telecharger_Video</a>
 <li class="barre-item">
 <a class="barre-link" href="logout.php">Se déconnecter</a>
 </li>
