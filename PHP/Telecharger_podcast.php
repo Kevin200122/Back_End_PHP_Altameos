@@ -28,17 +28,17 @@ if (isset($_POST['submit'])) {
                 $podcast_file_destination = 'uploads/' . $podcast_file_name_new; //chemin de destination, true = si le dossier n'existe pas, il sera créé
                 move_uploaded_file($podcast_file_tmp, $podcast_file_destination); //move_uploaded_file — Déplace un fichier téléchargé
                 $req = $conn->prepare('INSERT INTO podcast (title, file_path, rubrique, emission, interview) VALUES (?, ?, ?, ?, ?)');
-                $req->execute([$podcast_title, $podcast_file_destination, $rubrique, $emission, $interview]); //execute — Exécute une requête préparée
+                $req->execute([$podcast_title, $podcast_file_destination, $rubrique, $emission, $interview,$id_categorie ]); //execute — Exécute une requête préparée
                 
                 header('Location: index.php');
             } else {
-                echo "Your file is too big!";
+                echo "Ce fichier est trop volumineux!";
             }
         } else {
             echo "Error: " . $podcast_file_error;
         }
     } else {
-        echo "You cannot upload files of this type!";
+        echo "Vous ne pouvez upload un fichier de ce type!";
     }
 }
 
@@ -84,9 +84,15 @@ Afficher les articles
 </a>
 </li>
 <li>
-<a class="nav-link" href="upload_podcast.php">
+<a class="nav-link" href="Telecharger_podcast.php">
 <i class="fas fa-microphone"></i>
 Upload Podcast
+</a>
+</li>
+<li>
+<a class="nav-link" href="Upload_video.php">
+<i class="fas fa-video"></i>
+Upload vidéo
 </a>
 </li>
 </ul>
@@ -97,13 +103,13 @@ Upload Podcast
 
 
 <div class="container mt-5">
-<form method="POST" action="upload_podcast.php" enctype="multipart/form-data">
+<form method="POST" action="Telecharger_podcast.php" enctype="multipart/form-data">
 <div class="mb-3">
-<label for="podcast_file" class="form-label">Podcast File:</label>
+<label for="podcast_file" class="form-label">Podcast fichier:</label>
 <input type="file" name="podcast_file" id="podcast_file" class="form-control">
 </div>
 <div class="mb-3">
-<label for="podcast_title" class="form-label">Podcast Title:</label>
+<label for="podcast_title" class="form-label">Podcast Titre:</label>
 <input type="text" name="podcast_title" id="podcast_title" class="form-control">
 </div>
 <div class="mb-3">
