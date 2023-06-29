@@ -35,7 +35,7 @@ if(!$_SESSION['pseudo']) {
 <a class="barre-link" href="articles.php">Afficher tous les articles</a>
 </li>
 <li class="barre-item">
-<a class="barre-link" href="upload_podcast.php">Podcast</a>
+<a class="barre-link" href="Telecharger_podcast.php">Podcast</a>
 </li>
 <li class="barre-item">
 <a class="barre-link" href="modifier_categorie.php">Catégorie</a>
@@ -47,7 +47,13 @@ if(!$_SESSION['pseudo']) {
 <a class="barre-link" href="Telecharger_album.php">Telecharger_album</a>
 <li class="barre-item">
 <li class="barre-item">
-<a class="barre-link" href="Upload_video.php">Telecharger_Video</a>
+<a class="barre-link" href="Upload_video.php">Uploader_Video</a>
+<li class="barre-item">
+<a class="barre-link" href="Afficher_Video.php">Afficher_Video</a>
+<li class="barre-item">
+<a class="barre-link" href="Modifier_La_Video.php">Modifier les videos</a>
+<li class="barre-item">
+<a class="barre-link" href="Supprimer_La_Video.php">Supprimer les videos</a>
 <li class="barre-item">
 <a class="barre-link" href="logout.php">Se déconnecter</a>
 </li>
