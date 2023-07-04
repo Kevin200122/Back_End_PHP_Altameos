@@ -49,7 +49,7 @@ $podcasts = $req->fetchAll();
     <div class="container mp-4">
     <form method="POST" action="">
     <div class="form-group">
-    <label for="title">$Titre_Video</label>
+    <label for="title">Titre_Video</label>
     <input type="text" class="form-control" id="Titre_Video" name="Titre" placeholder="Titre" value="<?php echo $donnees['Titre_Video']; ?>"><!-- title est une colonne de la bdd elle est initie par $Titre_Video qui vaut title $titre = htmlspecialchars($_POST['Titre_Video']); en faisant cela dans notre placeholder on aura les donnees de la vidéo sélectionné  -->
     </div>
     <div class="form-group">

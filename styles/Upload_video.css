@@ -1,4 +1,32 @@
-div.card {
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.)lightblue;
-    background: lightblue;
+.video-controls {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+    background-color: #FFF;
+    border: 1px solid #000;
+}
+
+#play-btn {
+    left: 5px;
+}
+
+#pause-btn {
+    left: 5px;
+}
+
+#mute-btn {
+    left: 60px;
+}
+
+#unmute-btn {
+    left: 60px;
+}
+
+#stop-btn {
+    left: 115px;
+}
+
+#replay-btn {
+    left: 115px;
 }

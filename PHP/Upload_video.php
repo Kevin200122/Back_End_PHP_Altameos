@@ -6,14 +6,15 @@ if (!$_SESSION['pseudo']) {
     header('Location: connexion.php');
 }
 
+
 if (isset($_POST['submit'])) {
     $Nom = $_POST['Nom'];
     $contenu = $_POST['contenu'];
-    $video_file = $_FILES['video_file']['name']; //name — Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icône.png).
+    $video_file = $_FILES['video_file']['name']; //name — Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icône.jpg).
     $video_file_tmp = $_FILES['video_file']['tmp_name']; //tmp_name — Le nom du fichier sur le serveur où le fichier téléchargé a été stocké.
-    $video_file_size = $_FILES['video_file']['size']; //size — La taille en octets du fichier télécharger.
-    $video_file_error = $_FILES['video_file']['error']; //error — Le code d'erreur, qui permet de savoir si le fichier a bien été télécharger.
-    $video_file_type = $_FILES['video_file']['type']; //type — Le type du fichier. Par exemple, cela peut être « image/png ».
+    $video_file_size = $_FILES['video_file']['size']; //size — La taille en octets du fichier Uploader.
+    $video_file_error = $_FILES['video_file']['error']; //error — Le code d'erreur, qui permet de savoir si le fichier a bien été Uploader.
+    $video_file_type = $_FILES['video_file']['type']; //type — Le type du fichier. Par exemple, cela peut être « image/jpg ».
     
     $video_file_ext = explode('.', $video_file); //explode — Coupe une chaîne en segments
     $video_file_actual_ext = strtolower(end($video_file_ext)); //strtolower — Renvoie une chaîne en minuscules
@@ -27,7 +28,8 @@ if (isset($_POST['submit'])) {
                 $video_file_destination = '../Video' . $video_file_name_new; //chemin de destination, true = si le dossier n'existe pas, il sera créé
                 move_uploaded_file($video_file_tmp, $video_file_destination); //move_uploaded_file — Déplace un fichier téléchargé
                 $req = $conn->prepare('INSERT INTO video (Titre, contenu, Nom) VALUES (?, ?, ?)');
-                $req->execute([ $video_file_destination, $contenu, $Nom ]); //execute — Exécute une requête préparée
+                $req->execute([ $Titre,$contenu, $Nom ]); //execute — Exécute une requête préparée
+                header('Content-Type: video/mp4');
                 
                 header('Location: index.php');
             } else {
@@ -51,7 +53,7 @@ if (isset($_POST['submit'])) {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <!-- Incluez la bibliothèque Font Awesome dans l'en-tête de votre document -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="../styles/Video_style.css">
+<link rel="stylesheet" href="../styles/Upload_video.css">
 </head>
 
 <body>
@@ -130,11 +132,17 @@ while ($donnees = $req->fetch()) {
     echo '<p class="card-text">:Nom: ' . $donnees['Nom'] . '</p>';
     echo '<p class="card-text">:contenu: ' . $donnees['contenu'] . '</p>';
     echo '<video controls>';
-    echo '<source src="../Video"' . $donnees['Chemin_fichier'] . '" type="video/mp4" id="Indila">';
-    echo '<video>';
+    echo '<div id="play-btn" class="video-controls">PLAY</div>';
+    echo '<div id="pause-btn" class="video-controls">PAUSE</div>';
+    echo '<div id="mute-btn" class="video-controls">MUTE</div>';
+    echo '<div id="unmute-btn" class="video-controls">UNMUTE</div>';
+    echo '<div id="stop-btn" class="video-controls">STOP</div>';
+    echo '<div id="replay-btn" class="video-controls">REPLAY</div>';
+    echo '<source src="../Video"' .$donnees['Chemin_fichier'] . '" type="video/mp4">';
     echo '</video>';
     echo '</div>';
     echo '</div>';
+    
 }
 ?>
 </form>
