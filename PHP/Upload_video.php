@@ -27,8 +27,8 @@ if (isset($_POST['submit'])) {
                 $video_file_name_new = uniqid('', true) . "." . $video_file_actual_ext; //uniqid — Génère un identifiant unique basé sur l'heure courante en microsecondes et sur un paramètre binaire optionnel, qui permet de le rendre encore plus unique parce que est important que le nom du fichier soit unique
                 $video_file_destination = '../Video' . $video_file_name_new; //chemin de destination, true = si le dossier n'existe pas, il sera créé
                 move_uploaded_file($video_file_tmp, $video_file_destination); //move_uploaded_file — Déplace un fichier téléchargé
-                $req = $conn->prepare('INSERT INTO video (Titre, contenu, Nom) VALUES (?, ?, ?)');
-                $req->execute([ $Titre,$contenu, $Nom ]); //execute — Exécute une requête préparée
+                $req = $conn->prepare('INSERT INTO video (emplacement, contenu, Nom) VALUES (?, ?, ?)');
+                $req->execute([ $video_file_destination,$contenu, $Nom ]); //execute — Exécute une requête préparée
                 header('Content-Type: video/mp4');
                 
                 header('Location: index.php');
@@ -128,7 +128,7 @@ $req = $conn->query('SELECT * FROM video');
 while ($donnees = $req->fetch()) {
     echo '<div class="card mb-4">';
     echo '<div class="card-body">';
-    echo '<p class="card-text">Titre: ' . $donnees['Titre'] . '</p>';
+    echo '<p class="card-text">emplacement: ' . $donnees['emplacement'] . '</p>';
     echo '<p class="card-text">:Nom: ' . $donnees['Nom'] . '</p>';
     echo '<p class="card-text">:contenu: ' . $donnees['contenu'] . '</p>';
     echo '<video controls>';
