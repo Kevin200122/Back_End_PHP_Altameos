@@ -1,0 +1,25 @@
+body {
+    background: url("../Image/Page_garde.png");
+    background-size: cover;
+    height: 90vh;
+    min-height: 600px;
+    font-family: "arial", sans-serif;
+}
+
+footer img {
+    width: 400px;
+    height: 400px;
+    background-position: center;
+}
+
+.container {
+    position: absolute;
+    background-color: #042537;
+    width: 2500px;
+    height: 200px;
+    bottom: 700px;
+}
+
+footer .navbar {
+    padding: 2rem 0;
+}
