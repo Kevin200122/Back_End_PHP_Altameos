@@ -14,7 +14,7 @@ if(isset($_GET['id']) && trim($_GET['id']) != '') {
         $donnees = $req->fetch();
         if(isset($_POST['valider'])) {
             $Titre = htmlspecialchars($_POST['Titre']);
-            $Chemin_fichier = htmlspecialchars($_POST['Chemin_fichier']);
+            $emplacement = htmlspecialchars($_POST['emplacement']);
             $Nom = htmlspecialchars($_POST['Nom']);
             $contenu = htmlspecialchars($_POST['contenu']);
             $id_categorie = htmlspecialchars($_POST['id_categorie']);
@@ -47,9 +47,8 @@ $videos = $req->fetchAll();
 <?php include('../include/header.php'); ?>
 <?php if(isset($_GET['id']) and !empty($_GET['id'])): ?>
     <div class="container mt-4">
-    <h2><?= htmlspecialchars($donnees['Titre']); ?></h2>
-    <p><?= nl2br(htmlspecialchars($donnees['Chemin_fichier'])); ?></p>
-    <p>Titre: <strong><?= nl2br(htmlspecialchars($donnees['Nom'])); ?></p></strong>
+    <p><?= nl2br(htmlspecialchars($donnees['emplacement'])); ?></p>
+    <p>Emplacement: <strong><?= nl2br(htmlspecialchars($donnees['Nom'])); ?></p></strong>
     <p>Contenu: <strong><?= nl2br(htmlspecialchars($donnees['contenu'])); ?></p></strong>
     <p>Catégorie: <strong><?= nl2br(htmlspecialchars($donnees['id_categorie'])); ?></p></strong>
     <a href="?id=<?= $donnees['id']; ?>" class="btn btn-primary">Modifier la vidéo</a>
@@ -61,20 +60,17 @@ $videos = $req->fetchAll();
     <div class="container mt-4">
     <form method="POST" action="">
     <div class="form-group">
-    <label for="title">Titre</label>
-    <input type="text" class="form-control" id="Titre" name="titre" placeholder="Titre" value="<?php echo $donnees['Titre']; ?>"><!-- title est une colonne de la bdd elle est initie par $titre qui vaut title $titre = htmlspecialchars($_POST['title']); on faisons cela dans notre placeholder on aura les donnees du podcast sélectionne  -->
+    <label for="title">Emplacement</label>
+    <input type="text" class="form-control" id="Titre" name="titre" placeholder="emplacement" value="<?php echo $donnees['emplacement']; ?>"><!-- title est une colonne de la bdd elle est initie par $titre qui vaut title $titre = htmlspecialchars($_POST['title']); on faisons cela dans notre placeholder on aura les donnees du podcast sélectionne  -->
     </div>
     <div class="form-group">
     <label for="nom">Nom</label>
     <input type="text" class="form-control" id="nom" name="nom" placeholder="nom" value="<?php echo $donnees['Nom']; ?>">
     </div>
-    <div class="form-group">
-    <label for="Titre">Titre</label>
-    <input type="text" class="form-control" id="Titre" name="titre" placeholder="titre" value="<?php echo $donnees['Titre']; ?>">
     </div>
     <div class="form-group">
-    <label for="Titre">Chemin du fichier</label>
-    <input type="text" class="form-control" id="Titre" name="titre" placeholder="titre" value="<?php echo $donnees['Chemin_fichier']; ?>">
+    <label for="Titre">emplacement</label>
+    <input type="text" class="form-control" id="Titre" name="titre" placeholder="titre" value="<?php echo $donnees['emplacement']; ?>">
     </div>
     <div class="form-group">
     <label for="contenu">Contenu</label>

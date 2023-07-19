@@ -1,4 +1,11 @@
 <?php
+session_start();
+include('config.php');
+if(!$_SESSION['pseudo']) {
+    header('Location: connexion.php');
+}
+?>
+<?php
 // Vérifiez d'abord si l'utilisateur est connecté
 if (!isset($_SESSION['pseudo']) || empty($_SESSION['pseudo'])) {
     // Si l'utilisateur n'est pas connecté, redirigez-le vers la page de connexion

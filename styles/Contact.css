@@ -1,0 +1,77 @@
+form {
+    position: relative;
+    background-color: darkblue;
+    display: block;
+    width: 1900px;
+    height: 500px;
+    bottom: 20px;
+}
+
+h1 {
+    position: relative;
+    color: white;
+    display: block;
+    left: 50px;
+}
+
+button {
+    position: relative;
+    background-color: blue;
+    color: white;
+    width: 410px;
+    height: 30px;
+    left: 90px;
+    bottom: 100px;
+
+}
+
+textarea {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    left: 500px;
+    bottom: 145px;
+}
+
+input {
+    position: relative;
+    width: 400px;
+    left: 50px;
+    height: 30px;
+}
+
+footer img {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    bottom: 10px;
+    left: 800px;
+}
+
+.container {
+    position: relative;
+    background-color: #042537;
+    width: 1900px;
+    height: 400px;
+    bottom: 50px;
+}
+
+footer .navbar {
+    padding: 2rem 0;
+}
+
+#Le_Mini_Para {
+    font-size: 10px;
+    color: yellow;
+    text-align: center;
+}
+
+#Le_Para {
+    color: yellow;
+    text-align: center;
+}
+
+#Le_Para2 {
+    color: yellow;
+    text-align: center;
+}

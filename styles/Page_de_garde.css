@@ -1,7 +1,7 @@
 body {
     background: url("../Image/Page_garde.png");
     background-size: cover;
-    height: 90vh;
+    height: 100vh;
     min-height: 600px;
     font-family: "arial", sans-serif;
 }
@@ -13,11 +13,11 @@ footer img {
 }
 
 .container {
-    position: absolute;
+    position: relative;
     background-color: #042537;
     width: 2500px;
     height: 200px;
-    bottom: 700px;
+    bottom: -800px;
 }
 
 footer .navbar {

@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 session_start();
 include('config.php');
 
@@ -10,66 +12,59 @@ if(isset($_GET['id']) && trim($_GET['id']) != '') {
     if($req->rowCount() == 1) {
         $donnees = $req->fetch();
         if(isset($_POST['valider'])) {
-            $Titre_Video = htmlspecialchars($_POST['Titre_Video']);
+            $Nom = htmlspecialchars($_POST['Nom']);
             $contenu = htmlspecialchars($_POST['contenu']);
-            if(!empty($Titre_Video) AND !empty ($contenu)) {
-                $req = $conn->prepare('UPDATE video SET Titre_Video = ?, contenu = ?, WHERE id = ?');
-                $req->execute(array($Titre_Video, $contenu, $getid));
-                header('Location: Modifier_Video.php');
+            
+            if(!empty($Nom) && !empty($contenu)) {
+                $req = $conn->prepare('UPDATE video SET Nom = ?, contenu = ? WHERE id = ?');
+                $req->execute(array($Nom, $contenu, $getid));
+                header('Location: Modifier_La_Video.php');
             } else {
-                echo "Veuillez renseigner tous les champs";
+                echo "Veuillez remplir tous les champs";
             }
         }
     } else {
-        echo "Cette video est inexistante";
+        echo "Cette vidéo est introuvable!";
     }
 }
 
 $req = $conn->query('SELECT * FROM video');
-$podcasts = $req->fetchAll();
-
-
+$videos = $req->fetchAll();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modifier la video</title>
+<title>Modifier la vidéo</title>
 </head>
 <?php include('../include/header.php'); ?>
-<div class="container mp-4">
-<h2><?= htmlspecialchars($video['Titre_Video']); ?></h2>
-<p><?= nl2br(htmlspecialchars($video['contenu'])); ?></p>
-<a href="?id=<?= $video['id']; ?>" class="btn btn-primary">Modifier cette video</a>
-</div>
-<hr>
 
-<?php if(isset($_GET['id']) and !empty($_GET['id'])): ?>
-    <div class="container mp-4">
+<?php if(isset($_GET['id']) && !empty($_GET['id'])): ?>
+    <div class="container mt-4">
+    <p>Emplacement: <?= nl2br(htmlspecialchars($donnees['emplacement'])); ?></p>
+    <p>Nom: <?= nl2br(htmlspecialchars($donnees['Nom'])); ?></p>
+    <p>Contenu: <?= nl2br(htmlspecialchars($donnees['contenu'])); ?></p>
+    <p>Catégorie: <?= nl2br(htmlspecialchars($donnees['id_categorie'])); ?></p>
+    <a href="?id=<?= $donnees['id']; ?>" class="btn btn-primary">Modifier la vidéo</a>
+    </div>
+    <hr>
+    
+    <div class="container mt-4">
     <form method="POST" action="">
     <div class="form-group">
-    <label for="title">Titre_Video</label>
-    <input type="text" class="form-control" id="Titre_Video" name="Titre" placeholder="Titre" value="<?php echo $donnees['Titre_Video']; ?>"><!-- title est une colonne de la bdd elle est initie par $Titre_Video qui vaut title $titre = htmlspecialchars($_POST['Titre_Video']); en faisant cela dans notre placeholder on aura les donnees de la vidéo sélectionné  -->
+    <label for="nom">Nom</label>
+    <input type="text" class="form-control" id="nom" name="Nom" placeholder="Nom" value="<?= $donnees['Nom']; ?>">
     </div>
     <div class="form-group">
-    <label for="Upload">Upload</label>
-    <input type="file" class="form-control" id="file" name="file" placeholder="file">
-    </div>
-    <div class="form-group">
-    <label for="rubrique">Titre de la vidéo</label>
-    <input type="text" class="form-control" id="Titre_Video" name="TitreVideo" placeholder="Titre" value="<?php echo $donnees['Titre_Video']; ?>">
-    </div>
-    <div class="form-group">
-    <label for="contenu">contenu</label>
-    <textarea type="text" class="form-control" id="Le_Contenu" name="contenu" placeholder="Contenu" value="<?php echo $donnees['contenu']; ?>">
-    </div>
-    <div class="form-group">
-    <label for="id_categorie">ID Categorie</label>
-    <input type="text" class="form-control" id="id_categorie" name="id_categorie" placeholder="ID Categorie" value="Categorie<?php echo $donnees['id_categorie']; ?>">
+    <label for="contenu">Contenu</label>
+    <textarea class="form-control" id="contenu" name="contenu" placeholder="Contenu"><?= $donnees['contenu']; ?></textarea>
     </div>
     <button type="submit" class="btn btn-primary" name="valider">Valider</button>
     </form>
     </div>
     <?php endif; ?>
-    <?php include('../include/footer.php');?>
+    
+    <?php include('../include/footer.php'); ?>
+    

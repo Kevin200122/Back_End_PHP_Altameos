@@ -1,0 +1,50 @@
+#Container_noir {
+    position: relative;
+    display: inline-block;
+    background-color: black;
+    width: 1900px;
+    height: 100px;
+}
+
+h1 {
+    position: relative;
+    color: white;
+    background-color: black;
+    width: 1900px;
+    height: 100px;
+    left: 30px;
+}
+
+hr {
+    position: relative;
+    color: white;
+    height: 5px;
+    bottom: 40px;
+    width: 1900px;
+}
+
+body {
+    background-color: black;
+}
+
+#Container_video div {
+    background-color: black;
+    border: 2px solid white;
+    width: 1300px;
+    height: 650px;
+    color: white;
+}
+
+table,
+th,
+td {
+    border: 2px solid white;
+    width: 1300px;
+    color: white;
+}
+
+video {
+    width: 1200px;
+    height: 500px;
+    color: white;
+}

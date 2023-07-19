@@ -29,6 +29,9 @@ if(!$_SESSION['pseudo']) {
 <a class="barre-link" href="membres.php">Afficher les membres</a>
 </li>
 <li class="barre-item">
+<a class="barre-link" href="Les_Membres.php">Afficher tous les membres</a>
+</li>
+<li class="barre-item">
 <a class="barre-link" href="publier_article.php">Publier un article</a>
 </li>
 <li class="barre-item">
@@ -47,19 +50,27 @@ if(!$_SESSION['pseudo']) {
 <a class="barre-link" href="Telecharger_album.php">Telecharger_album</a>
 <li class="barre-item">
 <li class="barre-item">
-<a class="barre-link" href="Upload_video.php">Uploader_Video</a>
+<a class="barre-link" href="Uploader_Des_Videos.php">Uploader des Vidéos</a>
 <li class="barre-item">
-<a class="barre-link" href="Afficher_Video.php">Afficher_Video</a>
+<a class="barre-link" href="Upload_La_Video.php">Uploader la Vidéo</a>
+<li class="barre-item">
+<a class="barre-link" href="Afficher_Video.php">Afficher les Vidéos</a>
 <li class="barre-item">
 <a class="barre-link" href="Modifier_La_Video.php">Modifier les videos</a>
+<li class="barre-item">
+<a class="barre-link" href="Modifier_Video.php">Modifier video</a>
 <li class="barre-item">
 <a class="barre-link" href="Supprimer_La_Video.php">Supprimer les videos</a>
 <li class="barre-item">
 <a class="barre-link" href="Upload_Clips.php">Upload clips</a>
 <li class="barre-item">
+<a class="barre-link" href="Afficher_Clips.php">Afficher les clips</a>
+<li class="barre-item">
 <a class="barre-link" href="Accueil.php">Accueil</a>
 <li class="barre-item">
 <a class="barre-link" href="Page_de_garde.php">Page de garde</a>
+<li class="barre-item">
+<a class="barre-link" href="A_PROPOS_DE_MOI.php">À PROPOS DE MOI</a>
 <li class="barre-item">
 <a class="barre-link" href="logout.php">Se déconnecter</a>
 </li>

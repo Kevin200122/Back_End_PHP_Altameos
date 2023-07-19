@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <!-- Incluez la bibliothèque Font Awesome dans l'en-tête de votre document -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="../styles/Upload_video.css">
+<link rel="stylesheet" href="../styles/Upload_Clips.css">
 </head>
 
 <body>
@@ -115,7 +115,7 @@ Upload clips
 
 
 <div class="container mt-5">
-<form method="POST" action="Upload_Clips.php" enctype="multipart/form-data">
+<form method="POST" action="Upload_Clips.php" enctype="multipart/form-data" id="download">
 <div class="ka-3">
 <label for="clips_file" class="form-label">Clips fichier:</label>
 <input type="file" name="clips_file" id="clips_file" class="form-control">
@@ -128,7 +128,7 @@ Upload clips
 <label for="nom" class="form-label">Nom:</label>
 <input type="text" name="Nom" id="Nom_Clips" class="form-control">
 </div>
-<input type="submit" name="submit" value="Upload" class="btn btn-primary">
+<input type="submit" name="submit" value="Upload" class="btn btn-primary" id="Choisir_Fichier">
 
 <?php
 $req = $conn->query('SELECT * FROM clips');
@@ -138,7 +138,7 @@ while ($donnees = $req->fetch()) {
     echo '<p class="card-text">Auteur: ' . $donnees['Auteur'] . '</p>';
     echo '<p class="card-text">:Nom: ' . $donnees['Nom'] . '</p>';
     echo '<video controls>';
-    echo '<source src="../clips"' .$donnees['emplacement'] . '" type="video/mp4">';
+    echo '<source src="' .$donnees['emplacement'] . '" type="video/mp4">';
     echo '</video>';
     echo '</div>';
     echo '</div>';

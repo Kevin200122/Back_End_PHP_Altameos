@@ -1,0 +1,49 @@
+footer img {
+    width: 300px;
+    height: 100px;
+}
+
+.container {
+    position: relative;
+    background-color: #042537;
+    width: 1850px;
+    height: 400px;
+    bottom: -700px;
+}
+
+#Le_Para {
+    color: yellow;
+    text-align: center;
+}
+
+#Le_Para2 {
+    color: yellow;
+    text-align: center;
+}
+
+body {
+    background-image: url(../image/2019\ 08\ 23\ -\ SORTIE\ TOUR\ EIFFEL\ \(11\)\ 4.png);
+    background-size: cover;
+}
+
+h3 {
+    color: white;
+    text-align: right;
+}
+
+h1 {
+    color: white;
+    text-align: right;
+}
+
+#Le_Mini_Para {
+    font-size: 10px;
+    color: yellow;
+    text-align: center;
+}
+
+img {
+    display: block;
+    width: 30%;
+    margin: auto;
+}

@@ -75,9 +75,9 @@ if(!$_SESSION['pseudo']) {
     }); 
     // DOMContentLoaded  end
     </script>
-    
     </head>
     <body>
+    
     <!-- ============= COMPONENT ============== -->
     
     
@@ -96,7 +96,7 @@ if(!$_SESSION['pseudo']) {
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="Titan" data-bs-toggle="dropdown">  TITAN BEARD  </a>
     <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#"> A PROPOS DE L'ARTISTE </a></li>
+    <li><a class="dropdown-item" href="../PHP/A_PROPOS_DE_MOI.php"> A PROPOS DE L'ARTISTE </a></li>
     <li><a class="dropdown-item" href="#"> ALBUMS </a>
     </li>
     <ul class="submenu dropdown-menu">
@@ -115,7 +115,7 @@ if(!$_SESSION['pseudo']) {
     <li><a class="dropdown-item" href="#"> CLIPS & VIDÉOS </a></li>
     <li><a class="dropdown-item" href="#"> ACTUALITÉS </a>
     <li><a class="dropdown-item" href="#"> ILS PARLENT DE MOI... </a>
-    <li><a class="dropdown-item" href="#"> CONTACT </a>
+    <li><a class="dropdown-item" href="../PHP/Contact.php"> CONTACT </a>
     </ul>
     </li>
     <li class="nav-item dropdown">
@@ -143,11 +143,7 @@ if(!$_SESSION['pseudo']) {
     <li><a class="dropdown-item" href="#">Another submenu 2</a></li>
     <li><a class="dropdown-item" href="#">Another submenu 3</a></li>
     <li><a class="dropdown-item" href="#">Another submenu 4</a></li>
-    </ul>
-    </li>
-    <li><a class="dropdown-item" href="#"> Dropdown item 5 </a></li>
-    <li><a class="dropdown-item" href="#"> Dropdown item 6 </a></li>
-    </ul>
+    
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="Association" data-bs-toggle="dropdown">RADIO TITAN </a>
     <ul class="dropdown-menu">
@@ -175,16 +171,10 @@ if(!$_SESSION['pseudo']) {
     <li><a class="dropdown-item" href="#">Another submenu 4</a></li>
     </ul>
     </li>
-    <li><a class="dropdown-item" href="#"> Dropdown item 5 </a></li>
-    <li><a class="dropdown-item" href="#"> Dropdown item 6 </a></li>
+    </ul>
+    </li>
     </ul>
     
-    </ul>
-    </li>
-    </ul>
-    </ul>
-    </li>
-    </ul>
     
     </div> <!-- navbar-collapse.// -->
     </div> <!-- container-fluid.// -->
