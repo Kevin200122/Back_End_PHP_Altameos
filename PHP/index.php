@@ -66,6 +66,10 @@ if(!$_SESSION['pseudo']) {
 <li class="barre-item">
 <a class="barre-link" href="Afficher_Clips.php">Afficher les clips</a>
 <li class="barre-item">
+<a class="barre-link" href="Afficher_Des_Videos.php">Afficher des vidéos</a>
+<li class="barre-item">
+<a class="barre-link" href="Clip_Et_Videos.php">Clips et vidéos</a>
+<li class="barre-item">
 <a class="barre-link" href="Accueil.php">Accueil</a>
 <li class="barre-item">
 <a class="barre-link" href="Page_de_garde.php">Page de garde</a>

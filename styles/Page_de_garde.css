@@ -8,15 +8,15 @@ body {
 
 footer img {
     width: 400px;
-    height: 400px;
+    height: 300px;
     background-position: center;
 }
 
 .container {
     position: relative;
     background-color: #042537;
-    width: 2500px;
-    height: 200px;
+    width: 1890px;
+    height: 400px;
     bottom: -800px;
 }
 

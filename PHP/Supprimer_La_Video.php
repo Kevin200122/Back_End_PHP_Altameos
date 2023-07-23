@@ -1,14 +1,13 @@
 <?php
-session_start();
 include('config.php');
-require('Permission_Administrateur');
+require('Permission_Administrateur.php');
 
 if (isset($_GET['id_categorie']) and !empty($_GET['id_categorie'])) {
     $getid = intval($_GET['id_categorie']);
-    $req = $conn->prepare('SELECT * FROM categories WHERE id_categorie = ?');
+    $req = $conn->prepare('SELECT * FROM categorie WHERE id_categorie = ?');
     $req->execute(array($getid));
     if ($req->rowCount() > 0) {
-        $delete = $conn->prepare('DELETE FROM categories WHERE id_categorie = ?');
+        $delete = $conn->prepare('DELETE FROM categorie WHERE id_categorie = ?');
         $delete->execute(array($getid));
         header('Location: ./index.php'); //redirect to the homepage after deletion
         exit;
