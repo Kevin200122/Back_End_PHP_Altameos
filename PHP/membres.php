@@ -7,7 +7,7 @@ if (!$_SESSION['pseudo']) {
 
 // Vérifier si l'utilisateur est un administrateur
 if ($_SESSION['role'] !== 'admin') {
-    header('Location: accueil.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+    header('Location: Accueil2.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
 }
 ?>
 

@@ -72,9 +72,17 @@ if(!$_SESSION['pseudo']) {
 <li class="barre-item">
 <a class="barre-link" href="Accueil.php">Accueil</a>
 <li class="barre-item">
+<a class="barre-link" href="Accueil2.php">Accueil 2</a>
+<li class="barre-item">
 <a class="barre-link" href="Page_de_garde.php">Page de garde</a>
 <li class="barre-item">
 <a class="barre-link" href="A_PROPOS_DE_MOI.php">À PROPOS DE MOI</a>
+<li class="barre-item">
+<a class="barre-link" href="A_Propos_Artiste.php">À PROPOS de L'ARTISTE</a>
+<li class="barre-item">
+<a class="barre-link" href="footer.php">Footer</a>
+<li class="barre-item">
+<a class="barre-link" href="Permission_Administrateur.php">Permission</a>
 <li class="barre-item">
 <a class="barre-link" href="logout.php">Se déconnecter</a>
 </li>

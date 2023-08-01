@@ -37,13 +37,13 @@ crossorigin="anonymous">
 </div>
 <table>
 <tr>
-<td>Derniere Danse</td>
+<td>TITAN BEARD-SPOT BY TITAN BEARD</td>
 </tr>
 <tr>
-<td>I was born for loving you</td>
+<td>Description of INTERVIEW TRISTAN BEARD-JANVIER 2023 BY TITAN BEARD</td>
 </tr>
 <tr>
-<td>Demis-roussos</td>
+<td>INTERVIEW TRISTAN BEARD-JANVIER 2023 BY TITAN BEARD</td>
 </tr>
 </table>
 <div class="navigation-buttons">
@@ -56,28 +56,28 @@ crossorigin="anonymous">
 const videos = [
     {
         emplacement: "../Video/Derniere Danse.mp4",
-        Nom: "TITAN BEARD-SPOT BY TITAN BEARD",
-        contenu: "Description of TITAN BEARD-SPOT BY TITAN BEARD"
+        Nom: "Dernière danse",
+        contenu: "Je remue le ciel le jour la nuit, je danse avec le vent, la pluie."
     },
     {
         emplacement: "../Video/I was born for loving you.mp4",
-        Nom: "INTERVIEW TRISTAN BEARD-JANVIER 2023 BY TITAN BEARD",
-        contenu: "Description of INTERVIEW TRISTAN BEARD-JANVIER 2023 BY TITAN BEARD"
+        Nom: "I was born for loving you",
+        contenu: ""
     },
     {
         emplacement: "../Video/Demis-roussos.mp4",
-        Nom: "INTERVIEW TRISTAN BEARD-MARS 2023 BY TITAN BEARD",
-        contenu: "Description of INTERVIEW TRISTAN BEARD-MARS 2023 BY TITAN BEARD"
+        Nom: "Quand je t'aime",
+        contenu: "Quand je t-aimes j'ai l'impression d'être un roi."
     },
     {
         emplacement: "../Video/Voyage_Voyage_Desireless.mp4",
-        Nom: "INTERVIEW TRISTAN BEARD-MARS 2023 BY TITAN BEARD",
-        contenu: "Description of INTERVIEW TRISTAN BEARD-MARS 2023 BY TITAN BEARD"
+        Nom: "Voyage voyage",
+        contenu: "Au dessus du vieux volcan, glissé sous le tapis du vent."
     },
     {
         emplacement: "../Video/Pierre_Bachelet_Vingt_ans.mp4",
-        Nom: "INTERVIEW TRISTAN BEARD-MARS 2023 BY TITAN BEARD",
-        contenu: "Description of INTERVIEW TRISTAN BEARD-MARS 2023 BY TITAN BEARD"
+        Nom: "Dans ce temps là j'avais vingt ans .",
+        contenu: "Dans ce temps là, j'avais vingt ans sur la télé en noir et blanc, on découvrais le rock n roll."
     }
 ];
 

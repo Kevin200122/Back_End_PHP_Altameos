@@ -4,7 +4,10 @@ include('config.php');
 if (!$_SESSION['pseudo']) {
     header('Location: connexion.php');
 }
-
+// Vérifier si l'utilisateur est un administrateur
+if ($_SESSION['role'] !== 'admin') {
+    header('Location: Acces_refuse.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+}
 
 if (isset($_POST['submit'])) {
     $Nom = $_POST['Nom'];

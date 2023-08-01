@@ -60,4 +60,3 @@ while($donnees = $req->fetch()) {
     <?php endif; ?>
     </body>
     </html>
-    

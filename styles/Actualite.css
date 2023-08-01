@@ -1,0 +1,32 @@
+h1 {
+    position: relative;
+    color: white;
+    left: 120px;
+
+}
+
+container {
+    background-color: black;
+    position: relative;
+    display: inline-block;
+    bottom: 0px;
+    width: 1900px;
+    height: 200px;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+table,
+th,
+td {
+    position: relative;
+    border: 2px solid black;
+    width: 1300px;
+    color: black;
+    background-color: lightgray;
+    width: 1900px;
+    font-weight: 700;
+    height: 60px;
+    text-transform: capitalize;
+    font-size: x-large;
+}

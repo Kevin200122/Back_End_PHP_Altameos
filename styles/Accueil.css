@@ -4,6 +4,7 @@ body {
     height: 90vh;
     min-height: 600px;
     font-family: "arial", sans-serif;
+    background-color: black;
 }
 
 
@@ -69,7 +70,7 @@ body {
     #Le_logo {
         position: relative;
         width: 200px;
-        height: 200px;
+        height: 100px;
     }
 
     .dropdown-menu li {
@@ -84,14 +85,13 @@ body {
     .dropdown-menu .submenu {
         position: relative;
         display: none;
-        position: relative;
         left: 100%;
         top: -7px;
         background-color: blue;
     }
 
     .dropdown-menu .submenu-left {
-        right: 100%;
+        right: auto;
         left: auto;
     }
 
@@ -102,6 +102,17 @@ body {
     .dropdown-menu>li:hover>.submenu {
         display: block;
     }
+}
+
+#main-nav {
+    background: #E1E891;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 0%;
+    margin-top: -0.50%;
+    margin-right: 0%;
+    font-family: 'Sintony', sans-serif;
 }
 
 
@@ -123,5 +134,3 @@ body {
     }
 
 }
-
-/* ============ small devices .end// ============ */

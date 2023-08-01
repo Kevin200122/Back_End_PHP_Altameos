@@ -81,17 +81,17 @@ if(!$_SESSION['pseudo']) {
     <!-- ============= COMPONENT ============== -->
     
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"  aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     
     
-    <div class="collapse navbar-collapse" id="main_nav">
+    <div class="collapse navbar-collapse" id="Main_nav">
     
     
     <ul class="navbar-nav"> 
-    <!--<img src="../Image/titan-fm-logo copie 1.png" alt="logo" id="Le_logo"/>-->
+    <img src="../Image/titan-fm-logo copie 1.png" alt="logo" id="Le_logo"/>
     <li class="nav-item active"> <a class="nav-link" href="#" id="Accueil">ACCUEIL </a> </li>
     <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="Titan" data-bs-toggle="dropdown">  TITAN BEARD  </a>
@@ -112,7 +112,7 @@ if(!$_SESSION['pseudo']) {
     <li><a class="dropdown-item" href="#">Submenu item 5</a></li>
     </ul>
     </li>
-    <li><a class="dropdown-item" href="#"> CLIPS & VIDÉOS </a></li>
+    <li><a class="dropdown-item" href="../PHP/Clip_Et_Videos.php"> CLIPS & VIDÉOS </a></li>
     <li><a class="dropdown-item" href="#"> ACTUALITÉS </a>
     <li><a class="dropdown-item" href="#"> ILS PARLENT DE MOI... </a>
     <li><a class="dropdown-item" href="../PHP/Contact.php"> CONTACT </a>
@@ -171,6 +171,7 @@ if(!$_SESSION['pseudo']) {
     <li><a class="dropdown-item" href="#">Another submenu 4</a></li>
     </ul>
     </li>
+    </ul>
     </ul>
     </li>
     </ul>

@@ -18,7 +18,7 @@ button {
     position: relative;
     background-color: blue;
     color: white;
-    width: 410px;
+    width: 600px;
     height: 30px;
     left: 90px;
     bottom: 100px;
@@ -27,15 +27,15 @@ button {
 
 textarea {
     position: relative;
-    width: 400px;
+    width: 600px;
     height: 200px;
-    left: 500px;
+    left: 700px;
     bottom: 145px;
 }
 
 input {
     position: relative;
-    width: 400px;
+    width: 600px;
     left: 50px;
     height: 30px;
 }
