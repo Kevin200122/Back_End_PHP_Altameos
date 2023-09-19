@@ -4,6 +4,11 @@ ini_set('display_startup_errors', 1);
 session_start();
 include('config.php');
 
+// Vérifier si l'utilisateur est un administrateur
+if ($_SESSION['role'] !== 'admin') {
+    header('Location: Accueil2.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+}
+
 if(isset($_GET['id']) && trim($_GET['id']) != '') {
     $getid = $_GET['id'];
     
@@ -48,7 +53,7 @@ $clips = $req->fetchAll();
     <div class="container mt-4">
     <h2><?= htmlspecialchars($donnees['Auteur']); ?></h2>
     <p><?= nl2br(htmlspecialchars($donnees['emplacement'])); ?></p>
-    <p>Titre: <strong><?= nl2br(htmlspecialchars($donnees['Auteur'])); ?></p></strong>
+    <p>Auteur: <strong><?= nl2br(htmlspecialchars($donnees['Auteur'])); ?></p></strong>
     <p>Contenu: <strong><?= nl2br(htmlspecialchars($donnees['Nom'])); ?></p></strong>
     <p>Catégorie: <strong><?= nl2br(htmlspecialchars($donnees['id_categorie'])); ?></p></strong>
     <a href="?id=<?= $donnees['id']; ?>" class="btn btn-primary">Modifier le clip</a>
@@ -61,7 +66,7 @@ $clips = $req->fetchAll();
     <form method="POST" action="">
     <div class="form-group">
     <label for="title">Titre</label>
-    <input type="text" class="form-control" id="Titre" name="titre" placeholder="Titre" value="<?php echo $donnees['Titre']; ?>"><!-- title est une colonne de la bdd elle est initie par $titre qui vaut title $titre = htmlspecialchars($_POST['title']); on faisons cela dans notre placeholder on aura les donnees du clip sélectionne  -->
+    <input type="text" class="form-control" id="Titre" name="titre" placeholder="Titre" value=""<?php echo $donnees['Auteur']; ?>"><!-- title est une colonne de la bdd elle est initie par $titre qui vaut title $titre = htmlspecialchars($_POST['title']); on faisons cela dans notre placeholder on aura les donnees du clip sélectionne  -->
     </div>
     <div class="form-group">
     <label for="auteur">Auteur</label>

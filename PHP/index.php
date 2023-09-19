@@ -60,6 +60,8 @@ if(!$_SESSION['pseudo']) {
 <li class="barre-item">
 <a class="barre-link" href="Modifier_Video.php">Modifier video</a>
 <li class="barre-item">
+<a class="barre-link" href="Modifier_Le_Clip.php">Modifier clips</a>
+<li class="barre-item">
 <a class="barre-link" href="Supprimer_La_Video.php">Supprimer les videos</a>
 <li class="barre-item">
 <a class="barre-link" href="Upload_Clips.php">Upload clips</a>

@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-require('Permission_Administrateur.php');
+
 
 if (isset($_GET['id_categorie']) and !empty($_GET['id_categorie'])) {
     $getid = intval($_GET['id_categorie']);

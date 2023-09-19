@@ -6,7 +6,7 @@ if (!$_SESSION['pseudo']) {
 }
 // Vérifier si l'utilisateur est un administrateur
 if ($_SESSION['role'] !== 'admin') {
-    header('Location: Acces_refuse.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+    header('Location: Accueil2.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
 }
 
 if (isset($_POST['submit'])) {
@@ -25,12 +25,12 @@ if (isset($_POST['submit'])) {
     
     if (in_array($clips_file_actual_ext, $allowed)) {
         if ($clips_file_error === 0) { //0 = pas d'erreur
-            if ($clips_file_size < 200000000) { //200MB
+            if ($clips_file_size < 2000) { //200MB
                 $clips_file_name_new = uniqid('', true) . "." . $clips_file_actual_ext; //uniqid — Génère un identifiant unique basé sur l'heure courante en microsecondes et sur un paramètre binaire optionnel, qui permet de le rendre encore plus unique parce que est important que le nom du fichier soit unique
                 $clips_file_destination = '../clips' . $clips_file_name_new; //chemin de destination, true = si le dossier n'existe pas, il sera créé
                 move_uploaded_file($clips_file_tmp, $clips_file_destination); //move_uploaded_file — Déplace un fichier téléchargé
-                $req = $conn->prepare('INSERT INTO clips (emplacement,Auteur, Nom) VALUES (?, ?, ?)');
-                $req->execute([ $clips_file_destination,$Auteur, $Nom ]); //execute — Exécute une requête préparée
+                $req = $conn->prepare('INSERT INTO clips (Auteur, Nom) VALUES (?, ?)');
+                $req->execute([ $Auteur, $Nom ]); //execute — Exécute une requête préparée
                 header('Content-Type: video/mp4');
                 
                 header('Location: index.php');
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
             echo "Error: " . $clips_file_error;
         }
     } else {
-        echo "Vous ne pouvez upload un fichier de ce type!";
+        echo "<h4 style='color: yellow'>Vous ne pouvez upload un fichier de ce type!'</h4>";
     }
 }
 

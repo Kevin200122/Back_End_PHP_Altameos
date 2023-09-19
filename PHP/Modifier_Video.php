@@ -4,6 +4,11 @@ ini_set('display_startup_errors', 1);
 session_start();
 include('config.php');
 
+// Vérifier si l'utilisateur est un administrateur
+if ($_SESSION['role'] !== 'admin') {
+    header('Location: Accueil2.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+}
+
 if(isset($_GET['id']) && trim($_GET['id']) != '') {
     $getid = $_GET['id'];
     

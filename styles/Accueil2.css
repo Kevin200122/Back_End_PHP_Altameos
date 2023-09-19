@@ -91,3 +91,22 @@ body {
     }
 
 }
+
+@media all and(max-width:991px) {
+    .menu .submenu {
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+        margin-bottom: .5rem;
+        background-color: blue;
+        color: white;
+    }
+
+    body {
+        background: url("../Image/2019 08 23 - SORTIE TOUR EIFFEL (10) 1.png") center;
+        background-size: cover;
+        height: 30vh;
+        max-height: 300px;
+        font-family: "arial", sans-serif;
+        background-color: black;
+    }
+}
