@@ -10,10 +10,10 @@ if ($_SESSION['role'] !== 'admin') {
 }
 
 if (isset($_POST['submit'])) {
-    $Nom = $_POST['Nom'];
     $Auteur = $_POST ['Auteur'];
-    $clips_file = $_FILES['clips_file']['name']; //name — Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icône.jpg).
-    $clips_file_tmp = $_FILES['clips_file']['tmp_name']; //tmp_name — Le nom du fichier sur le serveur où le fichier téléchargé a été stocké.
+    $id_categorie = $_POST['id_categorie'];
+    $clips_file = $_FILES['contenu']['name']; //name — Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icône.jpg).
+    $clips_file_tmp = $_FILES['contenu']['tmp_name']; //tmp_name — Le nom du fichier sur le serveur où le fichier téléchargé a été stocké.
     $clips_file_size = $_FILES['clips_file']['size']; //size — La taille en octets du fichier Uploader.
     $clips_file_error = $_FILES['clips_file']['error']; //error — Le code d'erreur, qui permet de savoir si le fichier a bien été Uploader.
     $clips_file_type = $_FILES['clips_file']['type']; //type — Le type du fichier. Par exemple, cela peut être « image/jpg ».
@@ -28,12 +28,15 @@ if (isset($_POST['submit'])) {
             if ($clips_file_size < 2000) { //200MB
                 $clips_file_name_new = uniqid('', true) . "." . $clips_file_actual_ext; //uniqid — Génère un identifiant unique basé sur l'heure courante en microsecondes et sur un paramètre binaire optionnel, qui permet de le rendre encore plus unique parce que est important que le nom du fichier soit unique
                 $clips_file_destination = '../clips' . $clips_file_name_new; //chemin de destination, true = si le dossier n'existe pas, il sera créé
-                move_uploaded_file($clips_file_tmp, $clips_file_destination); //move_uploaded_file — Déplace un fichier téléchargé
-                $req = $conn->prepare('INSERT INTO clips (Auteur, Nom) VALUES (?, ?)');
-                $req->execute([ $Auteur, $Nom ]); //execute — Exécute une requête préparée
-                header('Content-Type: video/mp4');
-                
-                header('Location: index.php');
+                if (move_uploaded_file($clips_file_tmp, $clips_file_destination)){ //move_uploaded_file — Déplace un fichier téléchargé
+                    $req = $conn->prepare('INSERT INTO clips (id_categorie,Auteur, emplacement) VALUES (?, ?, ?)');
+                    $req->execute([ $id_categorie,$Auteur, $clips_file_destination]); //execute — Exécute une requête préparée
+                    header('Content-Type: video/mp4');
+                    
+                    header('Location: index.php');
+                } else {
+                    echo "Erreur lors de l'upload du clip.";
+                }
             } else {
                 echo "Ce fichier est trop volumineux!";
             }
@@ -41,7 +44,7 @@ if (isset($_POST['submit'])) {
             echo "Error: " . $clips_file_error;
         }
     } else {
-        echo "<h4 style='color: yellow'>Vous ne pouvez upload un fichier de ce type!'</h4>";
+        echo "<h4 style='color: yellow'>Vous ne pouvez pas upload un fichier de ce type!<br />Choisissez format mp4!'</h4>";
     }
 }
 
@@ -119,6 +122,22 @@ Upload clips
 
 <div class="container mt-5">
 <form method="POST" action="Upload_Clips.php" enctype="multipart/form-data" id="download">
+
+<label for="categorie" class="form-label">Catégorie:</label>
+<select name="id_categorie" id="id_categorie" class="form-control">
+<?php
+// Récupérez les catégories depuis la base de données et générez des options pour le menu déroulant
+$req_categories = $conn->query('SELECT * FROM Categorie');
+while ($categorie = $req_categories->fetch()) {
+    echo '<option value="' . $categorie['id_categorie'] . '">' . $categorie['Nom_de_la_categorie'] . '</option>';
+}
+?>
+</select>
+</div>
+<div class="ka-3">
+<label for="clips_file" class="form-label">Clip fichier:</label>
+<input type="file" name="contenu" id="clips_file" class="form-control">
+</div>
 <div class="ka-3">
 <label for="clips_file" class="form-label">Clips fichier:</label>
 <input type="file" name="clips_file" id="clips_file" class="form-control">
@@ -134,12 +153,13 @@ Upload clips
 <input type="submit" name="submit" value="Upload" class="btn btn-primary" id="Choisir_Fichier">
 
 <?php
-$req = $conn->query('SELECT * FROM clips');
+$req = $conn->query('SELECT clips.*, categorie.Nom_categorie FROM clips
+INNER JOIN categorie ON clips.id_categorie = categorie.id_categorie');
 while ($donnees = $req->fetch()) {
     echo '<div class="card mb-4">';
     echo '<div class="card-body">';
     echo '<p class="card-text">Auteur: ' . $donnees['Auteur'] . '</p>';
-    echo '<p class="card-text">:Nom: ' . $donnees['Nom'] . '</p>';
+    echo '<p class="card-text">:Nom de la catégorie: ' . $donnees['Nom_categorie'] . '</p>';
     echo '<video controls>';
     echo '<source src="' .$donnees['emplacement'] . '" type="video/mp4">';
     echo '</video>';

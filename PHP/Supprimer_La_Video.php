@@ -1,19 +1,19 @@
 <?php
 include('config.php');
 
-
-if (isset($_GET['id_categorie']) and !empty($_GET['id_categorie'])) {
+if (isset($_GET['id_categorie']) && !empty($_GET['id_categorie'])) {
     $getid = intval($_GET['id_categorie']);
-    $req = $conn->prepare('SELECT * FROM categorie WHERE id_categorie = ?');
-    $req->execute(array($getid));
-    if ($req->rowCount() > 0) {
-        $delete = $conn->prepare('DELETE FROM categorie WHERE id_categorie = ?');
-        $delete->execute(array($getid));
-        header('Location: ./index.php'); //redirect to the homepage after deletion
-        exit;
-    } else {
-        echo "Cette catégorie est introuvable";
-    }
+    
+    // Mettre à jour les vidéos associées en définissant id_categorie à NULL
+    $updateVideos = $conn->prepare('UPDATE videos SET id_categorie = NULL WHERE id_categorie = ?');
+    $updateVideos->execute(array($getid));
+    
+    // Ensuite, supprimer la catégorie
+    $deleteCategorie = $conn->prepare('DELETE FROM categorie WHERE id_categorie = ?');
+    $deleteCategorie->execute(array($getid));
+    
+    header('Location: ./Accueil2.php'); // Rediriger vers la page d'accueil après la suppression de la catégorie
+    exit;
 } else {
     echo "L'id n'est pas récupéré";
 }

@@ -1,50 +1,65 @@
 <?php
 session_start();
 include('config.php');
-if (!$_SESSION['pseudo']) {
+
+// Vérifiez si l'utilisateur est connecté
+if (!isset($_SESSION['pseudo'])) {
     header('Location: connexion.php');
+    exit();
 }
+
 // Vérifier si l'utilisateur est un administrateur
 if ($_SESSION['role'] !== 'admin') {
     header('Location: Accueil2.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+    exit();
 }
 
 if (isset($_POST['submit'])) {
     $Nom = $_POST['Nom'];
     $contenu = $_POST['contenu'];
-    $video_file = $_FILES['video_file']['name'];
-    $video_file_tmp = $_FILES['video_file']['tmp_name'];
-    $video_file_size = $_FILES['video_file']['size'];
-    $video_file_error = $_FILES['video_file']['error'];
-    $video_file_type = $_FILES['video_file']['type'];
+    $video_file = $_FILES['video_file'];
     
-    $video_file_ext = explode('.', $video_file);
-    $video_file_actual_ext = strtolower(end($video_file_ext));
-    
-    $allowed = array('mp4', 'mov', 'avi');
-    
-    if (in_array($video_file_actual_ext, $allowed)) {
-        if ($video_file_error === 0) {
+    // Vérifier s'il y a des erreurs lors du téléchargement du fichier
+    if ($video_file['error'] === 0) {
+        $video_file_name = $video_file['name'];
+        $video_file_tmp = $video_file['tmp_name'];
+        $video_file_size = $video_file['size'];
+        $video_file_type = $video_file['type'];
+        
+        // Vérifier l'extension du fichier
+        $allowed_extensions = array('mp4', 'mov', 'avi');
+        $video_file_ext = pathinfo($video_file_name, PATHINFO_EXTENSION);
+        
+        if (in_array(strtolower($video_file_ext), $allowed_extensions)) {
+            // Vérifier la taille du fichier
             if ($video_file_size < 300000000) {
-                $video_file_name_new = uniqid('', true) . "." . $video_file_actual_ext;
+                // Générer un nom de fichier unique
+                $video_file_name_new = uniqid('', true) . "." . $video_file_ext;
                 $video_file_destination = '../Video/' . $video_file_name_new;
-                move_uploaded_file($video_file_tmp, $video_file_destination);
                 
-                $req = $conn->prepare('INSERT INTO video (emplacement, contenu, Nom) VALUES (?, ?, ?)');
-                $req->execute([$video_file_destination, $contenu, $Nom]);
-                
-                header('Location: Afficher_video.php');
-                exit();
+                // Déplacer le fichier téléchargé vers le dossier de destination
+                if (move_uploaded_file($video_file_tmp, $video_file_destination)) {
+                    // Utiliser une requête préparée pour insérer les données dans la base de données
+                    $req = $conn->prepare('INSERT INTO video (emplacement, contenu, Nom) VALUES (?, ?, ?)');
+                    $req->execute([$video_file_destination, $contenu, $Nom]);
+                    
+                    header('Location: Afficher_video.php');
+                    exit();
+                } else {
+                    echo "Une erreur s'est produite lors du téléchargement du fichier.";
+                }
             } else {
-                echo "Ce fichier est trop volumineux!";
+                echo "Ce fichier est trop volumineux !";
             }
         } else {
-            echo "Error: " . $video_file_error;
+            echo "Vous ne pouvez pas télécharger un fichier de ce type !";
         }
     } else {
-        echo "Vous ne pouvez pas uploader un fichier de ce type!";
+        echo "Erreur lors du téléchargement du fichier : " . $video_file['error'];
     }
 }
+?>
+
 
 ?>
 <!DOCTYPE html>
