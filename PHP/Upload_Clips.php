@@ -1,39 +1,40 @@
 <?php
 session_start();
 include('config.php');
-if (!$_SESSION['pseudo']) {
+if (!isset($_SESSION['pseudo'])) { // Vérifiez si la session 'pseudo' est définie
     header('Location: connexion.php');
+    exit; // Ajoutez un exit pour arrêter l'exécution du script après la redirection
 }
 // Vérifier si l'utilisateur est un administrateur
 if ($_SESSION['role'] !== 'admin') {
     header('Location: Accueil2.php'); // Rediriger vers une page d'accueil appropriée pour les utilisateurs normaux
+    exit; // Ajoutez un exit pour arrêter l'exécution du script après la redirection
 }
 
 if (isset($_POST['submit'])) {
-    $Auteur = $_POST ['Auteur'];
+    $Auteur = $_POST['Auteur'];
     $id_categorie = $_POST['id_categorie'];
-    $clips_file = $_FILES['contenu']['name']; //name — Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icône.jpg).
-    $clips_file_tmp = $_FILES['contenu']['tmp_name']; //tmp_name — Le nom du fichier sur le serveur où le fichier téléchargé a été stocké.
-    $clips_file_size = $_FILES['clips_file']['size']; //size — La taille en octets du fichier Uploader.
-    $clips_file_error = $_FILES['clips_file']['error']; //error — Le code d'erreur, qui permet de savoir si le fichier a bien été Uploader.
-    $clips_file_type = $_FILES['clips_file']['type']; //type — Le type du fichier. Par exemple, cela peut être « image/jpg ».
+    $clips_file = $_FILES['contenu']['name'];
+    $clips_file_tmp = $_FILES['contenu']['tmp_name'];
+    $clips_file_size = $_FILES['contenu']['size']; // Changez 'clips_file' en 'contenu'
+    $clips_file_error = $_FILES['contenu']['error']; // Changez 'clips_file' en 'contenu'
+    $clips_file_type = $_FILES['contenu']['type']; // Changez 'clips_file' en 'contenu'
     
-    $clips_file_ext = explode('.', $clips_file); //explode — Coupe une chaîne en segments
-    $clips_file_actual_ext = strtolower(end($clips_file_ext)); //strtolower — Renvoie une chaîne en minuscules
+    $clips_file_ext = explode('.', $clips_file);
+    $clips_file_actual_ext = strtolower(end($clips_file_ext));
     
-    $allowed = array('mp4', 'mov', 'avi'); //array — Crée un tableau, avec les valeurs passées en paramètres, comme éléments qui représente les extensions autorisées
+    $allowed = array('mp4', 'mov', 'avi');
     
     if (in_array($clips_file_actual_ext, $allowed)) {
-        if ($clips_file_error === 0) { //0 = pas d'erreur
-            if ($clips_file_size < 2000) { //200MB
-                $clips_file_name_new = uniqid('', true) . "." . $clips_file_actual_ext; //uniqid — Génère un identifiant unique basé sur l'heure courante en microsecondes et sur un paramètre binaire optionnel, qui permet de le rendre encore plus unique parce que est important que le nom du fichier soit unique
-                $clips_file_destination = '../clips' . $clips_file_name_new; //chemin de destination, true = si le dossier n'existe pas, il sera créé
-                if (move_uploaded_file($clips_file_tmp, $clips_file_destination)){ //move_uploaded_file — Déplace un fichier téléchargé
-                    $req = $conn->prepare('INSERT INTO clips (id_categorie,Auteur, emplacement) VALUES (?, ?, ?)');
-                    $req->execute([ $id_categorie,$Auteur, $clips_file_destination]); //execute — Exécute une requête préparée
-                    header('Content-Type: video/mp4');
-                    
+        if ($clips_file_error === 0) {
+            if ($clips_file_size < 20000000) { // 20MB
+                $clips_file_name_new = uniqid('', true) . "." . $clips_file_actual_ext;
+                $clips_file_destination = '../clips/' . $clips_file_name_new; // Ajoutez un '/' après '../clips'
+                if (move_uploaded_file($clips_file_tmp, $clips_file_destination)) {
+                    $req = $conn->prepare('INSERT INTO clips (id_categorie, Auteur, emplacement) VALUES (?, ?, ?)');
+                    $req->execute([$id_categorie, $Auteur, $clips_file_destination]);
                     header('Location: index.php');
+                    exit; // Ajoutez un exit pour arrêter l'exécution du script après la redirection
                 } else {
                     echo "Erreur lors de l'upload du clip.";
                 }
@@ -44,11 +45,13 @@ if (isset($_POST['submit'])) {
             echo "Error: " . $clips_file_error;
         }
     } else {
-        echo "<h4 style='color: yellow'>Vous ne pouvez pas upload un fichier de ce type!<br />Choisissez format mp4!'</h4>";
+        echo "<h4 style='color: yellow'>Vous ne pouvez pas uploader un fichier de ce type!<br />Choisissez le format mp4!</h4>";
     }
 }
-
 ?>
+
+<!-- Le reste de votre code HTML reste inchangé. -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,30 +74,7 @@ if (isset($_POST['submit'])) {
 </button>
 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 <ul class="navbar-nav">
-<li>
-<a class="nav-link" href="membres.php">
-<i class="fas fa-users"></i>
-Membres
-</a>
-</li>
-<li>
-<a class="nav-link" href="publier_article.php">
-<i class="fas fa-edit"></i>
-Publier un article
-</a>
-</li>
-<li>
-<a class="nav-link" href="afficher_articles.php">
-<i class="fas fa-book"></i>
-Afficher les articles
-</a>
-</li>
-<li>
-<a class="nav-link" href="Telecharger_podcast.php">
-<i class="fas fa-microphone"></i>
-Upload Podcast
-</a>
-</li>
+
 <li>
 <a class="nav-link" href="Upload_video.php">
 <i class="fas fa-video"></i>
@@ -137,10 +117,6 @@ while ($categorie = $req_categories->fetch()) {
 <div class="ka-3">
 <label for="clips_file" class="form-label">Clip fichier:</label>
 <input type="file" name="contenu" id="clips_file" class="form-control">
-</div>
-<div class="ka-3">
-<label for="clips_file" class="form-label">Clips fichier:</label>
-<input type="file" name="clips_file" id="clips_file" class="form-control">
 </div>
 <div class="ka-3">
 <label for="Auteur" class="form-label">Auteur:</label>

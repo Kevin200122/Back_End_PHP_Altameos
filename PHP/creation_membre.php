@@ -19,22 +19,13 @@ if (isset($_POST['submit'])) { // Si le formulaire est soumis
     if (strlen($pass) < 8) {
         echo "Le mot de passe doit comporter au moins 8 caractères";
         exit;
-    } elseif (!preg_match("#[0-9]+#", $pass)) {
-        echo "Le mot de passe doit contenir au moins un chiffre";
+        
+    } elseif (!preg_match("#'/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/'#", $pass)) {
+        echo "Le mot de passe doit contenir au moins un chiffre.<br />
+        Doit contenir également un caractère spécial. <br />
+        Et pour finir doit avoir des lettres.";
         exit;
-    } elseif (!preg_match("#[a-zA-Z]+#", $pass)) {
-        echo "Le mot de passe doit contenir au moins une lettre";
-        exit;
-    } elseif (!preg_match("#[A-Z]+#", $pass)) {
-        echo "Le mot de passe doit contenir au moins une lettre majuscule";
-        exit;
-    } elseif (!preg_match("#\W+#", $pass)) {
-        echo "Le mot de passe doit contenir au moins un caractère spécial";
-        exit;
-    } elseif ($pass != $confirmation_pass) {
-        echo "Les mots de passe ne correspondent pas";
-        exit;
-    } else {
+    }else {
         echo "Mot de passe valide";
     }
     
